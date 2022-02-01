@@ -1,15 +1,17 @@
-
+// Set up data structures
 
 class Book {
     constructor(
         title = 'Empty',
         author = 'Empty',
         pages = '0',
+        date = 'Empty',
         isRead = false
     ) {
         this.title = title;
         this.author = author;
         this.pages = pages;
+        this.date = date;
         this.isRead = isRead;
     }
 }
@@ -39,6 +41,8 @@ class Library {
 }
 
 const library = new Library();
+
+//UI manipulation
 
 const removeBookFromLibrary = (e) => {
     console.log(e.target.closest('.book-card').getAttribute('index'));
@@ -87,11 +91,15 @@ const addBookToDisplay = (book) => {
 
     let author = document.createElement('h4');
     author.className = 'author-name';
-    author.innerHTML = `Written by ${book.author}`;
+    author.innerHTML = `By: ${book.author}`;
 
     let pages = document.createElement('h4');
     pages.className = 'page-count';
-    pages.innerHTML = `${book.pages} pages long`;
+    pages.innerHTML = `Length: ${book.pages} pages`;
+
+    let date = document.createElement('h4');
+    date.className = 'published';
+    date.innerHTML = `Published: ${book.date}`;
 
     let isReadDiv = document.createElement('div');
     isReadDiv.className = 'has-read';
@@ -100,36 +108,57 @@ const addBookToDisplay = (book) => {
     isReadText.innerHTML = 'Finished reading?';
     isReadDiv.appendChild(isReadText);
 
-    let isReadBox = document.createElement('input');
-    isReadBox.setAttribute('type', 'checkbox');
-    isReadBox.addEventListener('click', checkboxAlert);
+    let isReadBox = document.createElement('label');
+    let isReadSwitch = document.createElement('input');
+    let isReadSlider = document.createElement('span');
+    isReadBox.className = 'switch';
+    isReadSlider.className = 'slider';
+    isReadSwitch.setAttribute('type', 'checkbox');
+    isReadSwitch.addEventListener('click', checkboxAlert);
+    isReadBox.appendChild(isReadSwitch);
+    isReadBox.appendChild(isReadSlider);
     isReadDiv.appendChild(isReadBox);
 
     let deleteButton = document.createElement('div');
     deleteButton.className = 'delete';
-
-    let deleteImg = document.createElement('img');
-    deleteImg.src = "close-button.png";
-    deleteImg.className = 'delete-img';
-    deleteButton.appendChild(deleteImg);
+    let deleteText = document.createElement('span');
+    deleteText.innerHTML = "Remove";
+    deleteButton.appendChild(deleteText);
     deleteButton.addEventListener('click', removeBookFromLibrary);
+
+
 
     bookCard.setAttribute('index', library.books.indexOf(book));    
     
     cardHeader.appendChild(title);
-    cardHeader.appendChild(deleteButton);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
+    bookCard.appendChild(date);
     bookCard.appendChild(isReadDiv);
+    bookCard.appendChild(deleteButton);
+
+    closeModal();
+    clearBookInputFields();
+}
+
+const clearBookInputFields = () => {
+    document.getElementById('input-title').value = "";
+    document.getElementById('input-author').value = "";
+    document.getElementById('input-pages').value = "";
+    document.getElementById('input-date').value = "";
+    document.getElementById('input-finished').value = false;
 
 }
+
+//Adding book data
 
 const getBookFromInput = () => {
     const title = document.getElementById('input-title').value;
     const author = document.getElementById('input-author').value;
     const pages = document.getElementById('input-pages').value;
+    const date = document.getElementById('input-date').value;
     const hasRead = document.getElementById('input-finished').value;
-    return new Book(title, author, pages, hasRead);
+    return new Book(title, author, pages, date, hasRead);
 
 }
 
@@ -143,6 +172,21 @@ const addBookToLibrary = (e) => {
 const catalog = document.querySelector('#catalog');
 
 
-const hobbit = new Book('The Hobbit', 'JRR Tolkien', 433, 'not read yet');
+var modal = document.getElementById('modal');
+var modalOpener = document.getElementById('modal-opener');
+var cancel = document.getElementById('cancel-btn');
+
+const openModal = () => {
+    modal.style.display = "block";
+}
+
+const closeModal = () => {
+    modal.style.display = "none";
+}
+
+
+//Automatically adding test book
+
+const hobbit = new Book('The Hobbit', 'JRR Tolkien', 433, 'June 14 2004', 'not read yet');
 library.addBook(hobbit);
 addBookToDisplay(hobbit);
