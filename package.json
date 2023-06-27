@@ -2,9 +2,10 @@
   "name": "book-catalog",
   "version": "1.0.0",
   "description": "",
-  "main": "books.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,14 @@
   },
   "homepage": "https://github.com/DMRobb77/book-catalog#readme",
   "devDependencies": {
+    "css-loader": "^6.8.1",
     "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5"
+    "eslint-plugin-import": "^2.27.5",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
   },
   "dependencies": {
     "prettier": "2.8.8"
