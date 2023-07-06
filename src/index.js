@@ -1,6 +1,9 @@
 import './style.css';
 import Book from "./book";
+import initDOMSetup from './initial-layout';
 
+
+initDOMSetup();
 
 // Set up data structure
 
@@ -159,24 +162,22 @@ const addBookToLibrary = (e) => {
 
 const catalog = document.querySelector('#catalog');
 
-
 const modal = document.getElementById('modal');
 const modalOpener = document.getElementById('modal-opener');
-const cancel = document.getElementById('cancel-btn');
-
-
-
+const cancelBtn = document.getElementById('cancel-btn');
 const addBtn = document.getElementById('add-btn');
 
 const openModal = () => {
     modal.style.display = "block";
 }
 
-addBtn.addEventListener("click", openModal);
-
 const closeModal = () => {
     modal.style.display = "none";
 }
+
+modalOpener.addEventListener("click", openModal);
+addBtn.addEventListener("click", addBookToLibrary);
+cancelBtn.addEventListener("click", closeModal);
 
 
 // Automatically adding test book
