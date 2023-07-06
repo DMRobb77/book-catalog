@@ -1,6 +1,7 @@
 import './style.css';
 import Book from "./book";
 
+
 // Set up data structure
 
 class Library {
@@ -171,7 +172,7 @@ const openModal = () => {
     modal.style.display = "block";
 }
 
-addBtn.addEventListener("click",console.log("this time I"));
+addBtn.addEventListener("click", openModal);
 
 const closeModal = () => {
     modal.style.display = "none";
