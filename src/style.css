@@ -2,6 +2,7 @@
   --primary-dark: #68abb4;
   --primary-light: #c0c0c0;
   --secondary-light: #fefefe;
+  box-sizing: border-box;
   }
 
 @font-face {
@@ -101,63 +102,64 @@ label[for=input-finished]{
 }
 
 
-modal-opener {
+#modal-opener {
   font-size: 8em;
-  display: flex;
-  flex-direction: column;
-  width: 2.19em;
-  height: 2.76em;
-  margin: 15px 15px;
+  width: 95%;
+  height: 95%;
+  margin: 5px auto;
   background: #ffffff00;
   color: rgb(255, 255, 255);
-  padding-top: 5.45%;
   border: 5px solid rgba(24, 21, 21, 0);
   border-radius: 5px;
   align-self: center;
+  justify-self: center;
   position: relative;
+  line-height: 100%;
   box-shadow: 0 0 0 5px rgb(255, 255, 255);
   opacity: 0.5;
   transition: transform 250ms, opacity 400ms;
 }
 
-modal-opener:hover {
-  /*box-shadow: 0 0 0 5px rgb(255, 255, 255), 6px 7px 2px 1px rgba(7, 7, 7, 0.377);
-  text-shadow: 6px 7px 2px 1px rgba(7, 7, 7, 0.377);*/
+#modal-opener:hover {
   transform: scale(1.02);
   opacity: 1;
-
 }
 
-
 #catalog {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 0px 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-rows: 23rem;
+  grid-auto-rows: 23rem;
+  gap: 2rem;
+  padding: 2em 2em;
 }
 
 .book-card {
   display: flex;
   flex-direction: column;
-  width: 20em;
-  min-height: 23em;
-  margin: 15px 15px;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(50deg, #2f7f9e 10%, #75ddd8);
   color: var(--secondary-light);
   padding: 0px;
   border-radius: 5px;
   position: relative;
+  align-self: center;
   box-shadow: 3px 4px 2px 1px rgba(31, 30, 30, 0.281);
 }
 
 .card-header {
   display: flex;
   align-content: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   justify-content: space-between;
   background-color: #e7e7e721;
   border-radius: 5px 5px 0px 0px;
   min-height: 5em;
 }
+
 
 .author-name {
   margin-top: 1em;
@@ -234,11 +236,13 @@ input:checked + .slider:before {
   font-size: 1.7em;
   font-style: italic;
   font-weight: bold;
+  width: 100%;
   margin:auto;
   text-align: center;
   height: auto;
   padding: 8px;
   line-height: 1.2em;
+  overflow-wrap: break-word;
 }
 
 .delete {

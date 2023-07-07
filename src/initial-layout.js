@@ -1,5 +1,20 @@
 
 const initDOMSetup = () => {
+    // Create the title-holder div
+    const titleHolderDiv = document.createElement("div");
+    titleHolderDiv.id = "title-holder";
+
+    // Create the title heading element
+    const titleHeading = document.createElement("h2");
+    titleHeading.id = "title";
+    titleHeading.textContent = "Personal Library";
+
+    // Append the title heading to the title-holder div
+    titleHolderDiv.appendChild(titleHeading);
+
+    // Append the title-holder div to the document body
+    document.body.appendChild(titleHolderDiv);
+
     // Create the modal element
     const modalDiv = document.createElement("div");
     modalDiv.id = "modal";
