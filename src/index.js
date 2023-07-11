@@ -1,8 +1,7 @@
-import 'normalize.css';
-import './style.css';
 import Book from "./book";
 import initDOMSetup from './initial-layout';
-
+import 'normalize.css';
+import './style.css';
 
 initDOMSetup();
 

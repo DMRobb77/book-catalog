@@ -34,7 +34,6 @@ const initDOMSetup = () => {
     inputTitle.name = "input-title";
     inputTitle.placeholder = "Title";
     inputFieldsDiv.appendChild(inputTitle);
-    inputFieldsDiv.appendChild(document.createElement("br"));
 
     // Create the author input field
     const inputAuthor = document.createElement("input");
@@ -43,7 +42,6 @@ const initDOMSetup = () => {
     inputAuthor.name = "input-author";
     inputAuthor.placeholder = "Author";
     inputFieldsDiv.appendChild(inputAuthor);
-    inputFieldsDiv.appendChild(document.createElement("br"));
 
     // Create the pages input field
     const inputPages = document.createElement("input");
@@ -53,7 +51,6 @@ const initDOMSetup = () => {
     inputPages.placeholder = "Page count";
     inputPages.setAttribute("oninput", "this.value = this.value.replace(/[^0-9]/g, '').replace(/(\\..*)\\./g,'$1');");
     inputFieldsDiv.appendChild(inputPages);
-    inputFieldsDiv.appendChild(document.createElement("br"));
 
     // Create the date published label
     const datePublishedLabel = document.createElement("label");
@@ -68,20 +65,24 @@ const initDOMSetup = () => {
     inputDate.name = "input-date";
     inputDate.placeholder = "Date published";
     inputFieldsDiv.appendChild(inputDate);
-    inputFieldsDiv.appendChild(document.createElement("br"));
+
+    // Create the "Finished reading?" div
+    const finishedReadingDiv = document.createElement("div");
+    finishedReadingDiv.id = "finished-reading";
+    inputFieldsDiv.appendChild(finishedReadingDiv);
 
     // Create the "Finished reading?" label
     const finishedReadingLabel = document.createElement("label");
     finishedReadingLabel.htmlFor = "input-finished";
     finishedReadingLabel.textContent = "Finished reading?";
-    inputFieldsDiv.appendChild(finishedReadingLabel);
+    finishedReadingDiv.appendChild(finishedReadingLabel);
 
     // Create the "Finished reading?" checkbox
     const inputFinished = document.createElement("input");
     inputFinished.type = "checkbox";
     inputFinished.id = "input-finished";
     inputFinished.name = "input-finished";
-    inputFieldsDiv.appendChild(inputFinished);
+    finishedReadingDiv.appendChild(inputFinished);
 
     // Append the input-fields element to the book-entry element
     bookEntryDiv.appendChild(inputFieldsDiv);

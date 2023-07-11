@@ -3,23 +3,15 @@
   --primary-light: #c0c0c0;
   --secondary-light: #fefefe;
   box-sizing: border-box;
-  }
+}
+
+* {
+  box-sizing: border-box;
+}
 
 @font-face {
   font-family: Roboto;
   src: url(Roboto-Regular.ttf);
-}
-
-@font-face {
-  font-family: Roboto;
-  src: url(Roboto-Bold.ttf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: Roboto;
-  src: url(Roboto-BoldItalic.ttf);
-  font-weight: bold, italic;
 }
 
 html {
@@ -30,10 +22,10 @@ html {
 body {
   background: linear-gradient(310deg, #273035 10%, #475761);
   color: var(--primary-dark);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
   margin: 0;
-  /*margin-bottom: 100px;*/
   }
 
 h4 {
@@ -43,10 +35,23 @@ h4 {
 
 input {
   padding: 4px;
-  width: 80%;
-  margin: 5px;
+  margin-top: 4px;
+  width: 22rem;
+  display: block;
 }
 
+input[type="text"],input[type="number"],input[type="date"] {
+  height: 2.3rem;
+}
+
+input[type="number"] {
+  width: 12rem;
+  margin-bottom: 25px;
+}
+
+input[type="date"] {
+  width: 12rem;
+}
 
 #title-holder {
   background-color: var(--primary-dark);
@@ -54,7 +59,7 @@ input {
   justify-content: flex-start;
   align-items: center;
   font-size: 1.65em;
-  height: 7em;
+  height: 8rem;
   }
 
 #title {
@@ -62,31 +67,44 @@ input {
   margin-left: 1em;
   }
 
-
 /*Modal*/
 #modal{
   display: none;
   position: fixed;
   z-index: 1;
+  top:0;
+  bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0);
-  background-color: rgb(0,0,0,0.4);
-  
+  background-color: rgb(0,0,0,0.4); 
+}
+
+#finished-reading {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  grid-template-rows: 3rem;
+  align-items: center;
+  margin: 18px 0 30px 0;
+}
+
+label {
+  font-size: 1.2rem;
 }
 
 label[for=input-finished]{
-  display: inline-block;
+  /* display: inline-block; */
   padding: 0px;
-  width: 140px;
-  margin: 0px;
+  width: 100%;
 }
 
 #input-finished{
   padding: 0px;
-  width: 45px;
+  width: 1.2rem;
+  height: 1.2rem;
   margin: 0px;
 }
 
@@ -94,16 +112,25 @@ label[for=input-finished]{
   background-color: #6E7887;
   color: white;
   font-size: 1.12em;
-  margin: 10% auto;
+  margin: 12rem auto;
   padding: 20px;
-  width: 20em;
-  min-height: 21em;
+  width: 23em;
+  min-height: 26em;
   border-radius: 5px;
 }
 
+#input-fields{
+  margin-top: 10px;
+  padding: 0 auto;
+}
+
+#modal-btn-holder > button{
+  font-size: 1.3rem;
+  padding: 4px 10px;
+}
 
 #modal-opener {
-  font-size: 8em;
+  font-size: 10rem;
   width: 95%;
   height: 95%;
   margin: 5px auto;
@@ -118,6 +145,7 @@ label[for=input-finished]{
   box-shadow: 0 0 0 5px rgb(255, 255, 255);
   opacity: 0.5;
   transition: transform 250ms, opacity 400ms;
+  font-style: none;
 }
 
 #modal-opener:hover {
@@ -127,11 +155,11 @@ label[for=input-finished]{
 
 #catalog {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-template-rows: 23rem;
-  grid-auto-rows: 23rem;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  grid-template-rows: 26rem;
+  grid-auto-rows: 26rem;
   gap: 2rem;
-  padding: 2em 2em;
+  padding: 30px 30px;
 }
 
 .book-card {
@@ -148,18 +176,24 @@ label[for=input-finished]{
   box-shadow: 3px 4px 2px 1px rgba(31, 30, 30, 0.281);
 }
 
+.book-card > :nth-child(n+2):nth-child(-n+5) {
+  padding-left: 10%;
+  font-size: 1.1rem;
+}
+
 .card-header {
   display: flex;
   align-content: stretch;
+  justify-content: space-between; 
+  top: 0;
+  left: 0;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 10px;
   background-color: #e7e7e721;
   border-radius: 5px 5px 0px 0px;
   min-height: 5em;
 }
-
 
 .author-name {
   margin-top: 1em;
@@ -215,7 +249,6 @@ label[for=input-finished]{
   border-radius: 50%;
 }
 
-
 input:checked + .slider {
   background-color: #834444;
 }
@@ -255,6 +288,8 @@ input:checked + .slider:before {
   border-radius: 0px 0px 5px 5px;
   position: absolute;
   bottom: 0px;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
 .delete-img {
